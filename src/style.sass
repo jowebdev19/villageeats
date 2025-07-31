@@ -1,0 +1,46 @@
+//variables
+$main-yellow: #FFEABC
+$main-blue: #3D5F82
+
+$charm: "Charm", cursive
+$style-script: "Style Script", cursive
+$lato: "Lato", sans-serif
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    height: 100%
+
+.nav-link
+    text-decoration: none
+    color: $main-blue
+    margin: 0 20px
+    font-family: $charm
+    font-size: 1.5vw
+    &:hover
+        transform: scale(1.2)
+        cursor: pointer
+
+nav
+    background-color: $main-yellow
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    color: $main-blue
+    ul
+        margin-right: 20px
+        padding: 10px
+        list-style: none
+        display: flex
+        flex-direction: row
+    h1
+        font-family: $style-script
+        font-size: 3vw
+        margin: .75rem
+        margin-left: 20px
+        cursor: pointer
+        
