@@ -11,13 +11,14 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename='/villageeats'>
       <Header/>
       <Routes>
         <Route index element={<Home/>}></Route>
         <Route path='/Recipes' element={<Recipes/>}></Route>
         <Route path='/Favorites' element={<Favorites/>}></Route>
       </Routes>
+      <footer>&copy; 2025 Josiah Rivera</footer>
     </BrowserRouter>
     </>
   )
