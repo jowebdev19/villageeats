@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <div className='hero-container'>
-        <img src='/villageeats/public/veggiehero.jpg' />
+        <img src='/veggiehero.jpg' />
         <div className='screen'>&nbsp;</div>
         <h2>Tons of delicious recipes all in one place</h2>
         <p>View or create delicious recipes for all of your favorite foods. Save your favorite recipes for future scrumptious meals!</p>
