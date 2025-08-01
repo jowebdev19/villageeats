@@ -1,5 +1,5 @@
 
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {HashRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter basename='/villageeats'>
+    <HashRouter >
       <Header/>
       <Routes>
         <Route index element={<Home/>}></Route>
@@ -19,7 +19,7 @@ function App() {
         <Route path='/Favorites' element={<Favorites/>}></Route>
       </Routes>
       <footer>&copy; 2025 Josiah Rivera</footer>
-    </BrowserRouter>
+    </HashRouter>
     </>
   )
 }
