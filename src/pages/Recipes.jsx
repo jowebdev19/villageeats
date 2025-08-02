@@ -12,14 +12,14 @@ export default function Recipes() {
     <div className='recipes-container'>
       <div className='my-recipes'>
         <h2>My Recipes</h2>
-        <div className='recipes-container'>
+        <div className='card-container'>
             <button>+ <br></br>Add new recipe</button>
         </div>
       </div>
       <div className='community-recipes'>
          <h2>Community Recipes</h2>
-        <div className='recipes-container'>
-        
+        <div className='card-container'>
+          
         </div>
       </div>
     </div>
