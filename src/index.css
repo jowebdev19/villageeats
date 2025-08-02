@@ -92,6 +92,19 @@ nav h1 {
   cursor: pointer;
 }
 
+.recipes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFEABC;
+}
+.recipes-container h2 {
+  color: #3D5F82;
+  font-family: "Charm", cursive;
+  font-size: 1.9vw;
+}
+
 footer {
   background-color: #FFEABC;
   text-align: center;
