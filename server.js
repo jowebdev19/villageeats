@@ -11,7 +11,7 @@ app.get('/meal', (req, res) => {
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
     .then((response) => response.json())
     .then((meal) => {
-        console.log(meal)
+        
         return res.send(meal)
     })
 });

@@ -116,7 +116,7 @@ nav h1 {
 .recipes-container .card-container {
   display: grid;
   grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
   background-color: #FFEABC;
   width: 100%;
@@ -125,6 +125,34 @@ nav h1 {
   color: #3D5F82;
   font-family: "Charm", cursive;
   font-size: 1.9vw;
+}
+
+.card-style-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.card-style-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+}
+.card-style-container img {
+  width: 100%;
+}
+.card-style-container h3 {
+  font-family: "Lato", sans-serif;
+  font-size: 1.4vw;
+  margin: 30px 0;
+}
+.card-style-container p {
+  margin-bottom: 15px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9vw;
 }
 
 footer {

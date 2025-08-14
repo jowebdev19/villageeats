@@ -1,8 +1,10 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
+import RecipeCard from '../components/RecipeCard'
 
 export default function Recipes() {
+  const [meals, setMeals] = useState([])
 
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export default function Recipes() {
         })
         .then((data) => {
           console.log(data.meals)
+          setMeals(data.meals)
         })
       } catch (err){
         throw new Error()
@@ -37,6 +40,9 @@ export default function Recipes() {
         <h2>My Recipes</h2>
         <div className='card-container'>
             <button>+ <br></br>Add new recipe</button>
+            {meals?.map((meal) => {
+              return <RecipeCard key={meal.idMeal} data={meal} type={"custom"}/>
+            })}
         </div>
       </div>
       <div className='community-recipes'>
