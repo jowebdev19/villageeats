@@ -5,13 +5,11 @@ export default function RecipeCard({data, type}) {
   const navigate = useNavigate()
 
   function openCommunityRecipe(){
-    alert("Community")
-    //navigate()
+    navigate(`/CommunityRecipe/${data.idMeal}`, {state:{...data}})
   }
 
   function openCustomRecipe(){
-    alert("Custom")
-    //navigate()
+    navigate(`/CustomRecipe/${data.idMeal}`, {state:{...data}})
   }
   return (
     <div className='card-style-container' onClick={() => {

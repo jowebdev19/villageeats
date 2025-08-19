@@ -41,7 +41,7 @@ export default function Recipes() {
         <div className='card-container'>
             <button>+ <br></br>Add new recipe</button>
             {meals?.map((meal) => {
-              return <RecipeCard key={meal.idMeal} data={meal} type={"custom"}/>
+              return <RecipeCard key={meal.idMeal} data={meal} type={"community"}/>
             })}
         </div>
       </div>
