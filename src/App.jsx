@@ -7,6 +7,7 @@ import Recipes from './pages/Recipes'
 import Favorites from './pages/Favorites'
 import CommunityRecipe from './pages/CommunityRecipe'
 import CustomRecipe from './pages/CustomRecipe'
+import NewRecipe from './pages/NewRecipe'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Favorites' element={<Favorites/>}></Route>
         <Route path='/CommunityRecipe/:id' element={<CommunityRecipe/>}></Route>
         <Route path='/CustomRecipe/:id' element={<CustomRecipe/>}></Route>
+        <Route path='/NewRecipe' element={<NewRecipe/>}></Route>
       </Routes>
       <footer>&copy; 2025 Josiah Rivera</footer>
     </HashRouter>

@@ -106,20 +106,22 @@ nav
                 cursor: pointer
     .card-container
         display: grid
-        grid-template-rows: repeat(2, auto)
+        grid-template-rows: repeat(2, inherit)
         grid-template-columns: repeat(5, 1fr) 
         grid-auto-rows: auto  
+        gap: 20px
         background-color: $main-yellow
         width: 100%
     h2
         color: $main-blue
         font-family: $charm
         font-size: 1.9vw
+        margin: 20px
 
 .card-style-container
     background-color: white
     display: flex
-    justify-content: center
+    justify-content: space-between
     align-items: center
     flex-direction: column
     cursor: pointer
@@ -145,6 +147,23 @@ nav
     justify-content: center
     align-items: center
     background-color: $main-yellow
+    .page-actions
+        display: flex
+        width: 100%
+        flex-direction: row
+        justify-content: space-around
+        align-items: center
+        button
+            padding: 8px
+            background-color: $main-blue
+            color: white
+            font-family: $lato
+            font-size: 1.4vw
+            border: none
+            cursor: pointer
+            transition: .5s
+            &:hover
+                transform: scale(1.1)
     .meal-info
         display: flex
         flex-direction: row
@@ -154,6 +173,17 @@ nav
         .image-container
             text-align: center
             font-family: $lato
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            .image-upload
+                padding: .4vw
+                color: white
+                background-color: $main-blue
+                font-size: 1vw
+                cursor: pointer
+                margin-top: 10px
             p
                 font-size: 1.3vw
                 display: flex
@@ -161,15 +191,35 @@ nav
                 justify-content: center
                 align-items: center
                 cursor: pointer
-                margin-top: 15px
+                padding: 7px
+                background-color: white
+                width: 100%
         .ingredients
             margin-top: 30px
+            width: 25%
             text-align: center
             font-family: $lato
             align-self: stretch
             display: flex
             flex-direction: column
             align-items: center
+            button
+                padding: 8px
+                background-color: $main-blue
+                color: white
+                font-family: $lato
+                font-size: 1.4vw
+                border: none
+                cursor: pointer
+                transition: .5s
+                &:hover
+                    transform: scale(1.1)
+            input
+                border: none
+                width: 100%
+                padding: 8px
+                font-size: 1.4vw
+                text-align: center
             h2
                 color: $main-blue
                 font-size: 3vw
@@ -189,6 +239,10 @@ nav
         flex-direction: column
         justify-content: center
         align-items: center
+        textarea
+            resize: none
+            font-size: 1vw
+            padding: 10px
         h3
             color: $main-blue
             font-size: 2vw
@@ -205,4 +259,4 @@ footer
     text-align: center
     color: #3D5F82
     font-size: 1.3vw
-    padding: 10px
+    padding: 20px

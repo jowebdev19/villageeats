@@ -2,9 +2,11 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import RecipeCard from '../components/RecipeCard'
+import { useNavigate } from 'react-router-dom'
 
 export default function Recipes() {
   const [meals, setMeals] = useState([])
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function Recipes() {
           setMeals(data.meals)
         })
       } catch (err){
-        throw new Error()
+        throw new Error(err.message)
       }
     }
 
@@ -39,16 +41,16 @@ export default function Recipes() {
       <div className='my-recipes'>
         <h2>My Recipes</h2>
         <div className='card-container'>
-            <button>+ <br></br>Add new recipe</button>
-            {meals?.map((meal) => {
-              return <RecipeCard key={meal.idMeal} data={meal} type={"community"}/>
-            })}
+            <button onClick={() => navigate("/NewRecipe")}>+ <br></br>Add new recipe</button>
+            
         </div>
       </div>
       <div className='community-recipes'>
          <h2>Community Recipes</h2>
         <div className='card-container'>
-        
+          {meals?.map((meal) => {
+            return <RecipeCard key={meal.idMeal} data={meal} type={"community"}/>
+          })}
         </div>
       </div>
     </div>

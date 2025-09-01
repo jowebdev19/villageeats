@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 
 export default function Home() {
-  
 
+
+  localStorage.setItem("favorites", JSON.stringify([]))
   const navigate = useNavigate()
   return (
     <>
