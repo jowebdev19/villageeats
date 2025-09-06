@@ -164,6 +164,58 @@ nav h1 {
   align-items: center;
   background-color: #FFEABC;
 }
+.recipe-page-container .ingredient-modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.recipe-page-container .ingredient-modal .modal-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-family: "Lato", sans-serif;
+}
+.recipe-page-container .ingredient-modal .modal-container h3 {
+  font-size: 1.5vw;
+}
+.recipe-page-container .ingredient-modal .modal-container .modal-inputs {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.recipe-page-container .ingredient-modal .modal-container .modal-inputs input {
+  text-align: center;
+  font-size: 1.2vw;
+  padding: 5px;
+}
+.recipe-page-container .ingredient-modal .modal-container .modal-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.recipe-page-container .ingredient-modal .modal-container .modal-buttons button {
+  padding: 8px 50px;
+  background-color: #3D5F82;
+  color: white;
+  font-size: 1.2vw;
+  border: none;
+  cursor: pointer;
+}
 .recipe-page-container .page-actions {
   display: flex;
   width: 100%;
@@ -190,6 +242,7 @@ nav h1 {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin-top: 20px;
 }
 .recipe-page-container .meal-info .image-container {
   text-align: center;
@@ -198,6 +251,11 @@ nav h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.recipe-page-container .meal-info .image-container img {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
 }
 .recipe-page-container .meal-info .image-container .image-upload {
   padding: 0.4vw;
@@ -228,6 +286,10 @@ nav h1 {
   flex-direction: column;
   align-items: center;
 }
+.recipe-page-container .meal-info .ingredients .delete-ingredient {
+  background-color: rgba(0, 0, 0, 0);
+  color: red;
+}
 .recipe-page-container .meal-info .ingredients button {
   padding: 8px;
   background-color: #3D5F82;
@@ -236,10 +298,6 @@ nav h1 {
   font-size: 1.4vw;
   border: none;
   cursor: pointer;
-  transition: 0.5s;
-}
-.recipe-page-container .meal-info .ingredients button:hover {
-  transform: scale(1.1);
 }
 .recipe-page-container .meal-info .ingredients input {
   border: none;

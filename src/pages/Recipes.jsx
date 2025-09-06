@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import RecipeCard from '../components/RecipeCard'
 import { useNavigate } from 'react-router-dom'
+import CustomRecipe from '../components/CustomRecipe'
 
 export default function Recipes() {
   const [meals, setMeals] = useState([])
@@ -42,14 +43,18 @@ export default function Recipes() {
         <h2>My Recipes</h2>
         <div className='card-container'>
             <button onClick={() => navigate("/NewRecipe")}>+ <br></br>Add new recipe</button>
-            
+             {
+          localStorage.getItem("customRecipes") !== null ? JSON.parse(localStorage.getItem("customRecipes")).map((data) => {
+            return <CustomRecipe key={data.mealName} data={data}/>
+          }) : ''
+         }
         </div>
       </div>
       <div className='community-recipes'>
          <h2>Community Recipes</h2>
         <div className='card-container'>
           {meals?.map((meal) => {
-            return <RecipeCard key={meal.idMeal} data={meal} type={"community"}/>
+            return <RecipeCard key={meal.idMeal} data={meal}/>
           })}
         </div>
       </div>

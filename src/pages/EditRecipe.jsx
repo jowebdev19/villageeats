@@ -1,8 +1,9 @@
-
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 
-export default function NewRecipe() {
+
+export default function EditRecipe() {
+    const location = useLocation()
     const navigate = useNavigate()
     const [newIngredient, setNewIngredients] = useState({
         amount: "",
@@ -10,7 +11,7 @@ export default function NewRecipe() {
         openModal: 'none'
     })
     const [recipeInfo, setRecipeInfo] = useState({
-        mealId: undefined,
+        mealId: "",
         mealName: "",
         mealInstructions: "",
         mealImage: "",
@@ -18,6 +19,7 @@ export default function NewRecipe() {
     })
     const customRecipes = JSON.parse(localStorage.getItem("customRecipes"))
     const imageRef = useRef()
+
     console.log(recipeInfo)
 
     function modalHandler(e){
@@ -33,9 +35,16 @@ export default function NewRecipe() {
             alert("Fill out every field and add at least one ingredient before submitting")
         } else {
             if (customRecipes !== null){
-                localStorage.setItem("customRecipes", JSON.stringify([...customRecipes, {...recipeInfo, mealId: Date.now()}]))
+                const editedVersion = JSON.parse(localStorage.getItem('customRecipes')).map((recipe) => {
+                    if (recipe.mealId === location.state.mealId){
+                        return recipeInfo
+                    } else {
+                        return recipe
+                    }
+                })
+                localStorage.setItem("customRecipes", JSON.stringify(editedVersion))
             } else {
-                localStorage.setItem("customRecipes", JSON.stringify([ {...recipeInfo, mealId: Date.now()}]))
+                localStorage.setItem("customRecipes", JSON.stringify([recipeInfo]))
             }
             navigate('/Recipes')
         }
@@ -80,11 +89,17 @@ export default function NewRecipe() {
         })
     }
 
+    function deleteRecipe(mealId){
+        const newRecipes = JSON.parse(localStorage.getItem('customRecipes')).filter(recipe => recipe.mealId !== mealId)
+        localStorage.setItem('customRecipes', JSON.stringify(newRecipes))
+        navigate('/Recipes')
+    }
+
     useEffect(() => {
-        setNewIngredients((prevState) => {
-            return {...prevState, amount: "", ingredient: ""}
-        })
-    },[recipeInfo])
+        if (location.state){
+            setRecipeInfo(location.state)
+        }
+    }, [])
  
   return (
     <form className='recipe-page-container'>
@@ -103,6 +118,7 @@ export default function NewRecipe() {
         </div>
         <div className='page-actions'>
             <button onClick={() => navigate('/Recipes')}>Back to Recipes</button>
+            <button onClick={() => deleteRecipe(location.state.mealId)}>Delete Recipe</button>
             <button onClick={() => saveMeal()}>Save Meal</button>
         </div>
         <div className='meal-info'>
@@ -114,7 +130,7 @@ export default function NewRecipe() {
                 }}/>
             </div>
             <div className='ingredients'>
-                <input type="text" onChange={(e) => setRecipeInfo({...recipeInfo, mealName: e.target.value})} placeholder='Meal Name' />
+                <input type="text" onChange={(e) => setRecipeInfo({...recipeInfo, mealName: e.target.value})} defaultValue={location.state?.mealName} placeholder='Meal Name' />
                 <h3>Ingredients</h3>
                 {
                    recipeInfo.ingredients.length === 0 ? <p style={{fontSize: "1.2vw", margin: "20px"}}>No ingredients added</p> 
@@ -130,7 +146,7 @@ export default function NewRecipe() {
         </div>
         <div className='directions'>
             <h3>Instructions</h3>
-            <textarea onChange={(e) => setRecipeInfo({...recipeInfo, mealInstructions: e.target.value})} rows="20" cols="90" placeholder='Recipe instructions...'></textarea>
+            <textarea onChange={(e) => setRecipeInfo({...recipeInfo, mealInstructions: e.target.value})} defaultValue={location.state?.mealInstructions} rows="20" cols="90" placeholder='Recipe instructions...'></textarea>
         </div>
     </form>
   )

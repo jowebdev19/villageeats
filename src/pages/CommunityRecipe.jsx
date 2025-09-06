@@ -22,6 +22,7 @@ export default function CommunityRecipe() {
 
     }
 
+
     // effect for getting and setting ingredients on the page
     useEffect(() => {
         const ingredients = []
