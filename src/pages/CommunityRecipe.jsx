@@ -5,7 +5,7 @@ export default function CommunityRecipe() {
 
     const location = useLocation()
     const favorites = JSON.parse(localStorage.getItem('favorites')) ///array of favorite recipes
-    const [favorited, setFavorited] = useState(false)
+    const [favorited, setFavorited] = useState(undefined)
     const [ingredients, setIngredients] = useState([])
     const [measure, setMeasure] = useState([])
 
@@ -13,11 +13,11 @@ export default function CommunityRecipe() {
         if (favorited){
             let newFavorites = favorites.filter(recipe => recipe.idMeal !== location.state.idMeal)
             localStorage.setItem('favorites', JSON.stringify(newFavorites))
-            setFavorited(false)
+            setFavorited(prevState => !prevState)
         } else {
             let newFavorites = [...favorites, location.state]
             localStorage.setItem('favorites', JSON.stringify(newFavorites))
-            setFavorited(true)
+            setFavorited(prevState => !prevState)
         }
 
     }
@@ -45,18 +45,12 @@ export default function CommunityRecipe() {
         
     }, [])
 
-    //effect for determining if the recipe is favorited or not
+    // //effect for determining if the recipe is favorited or not
     useEffect(() => {
       
-        favorites.map((recipe) => {
-            if(recipe.idMeal === location.state.idMeal){
-                setFavorited(true)
-            } else {
-                setFavorited(false)
-            }
-        })
-
-    }, [favorited, favorites])
+        const isFavorited = favorites.some(recipe => recipe.idMeal === location.state.idMeal)
+        setFavorited(isFavorited)
+    }, [])
   return (
     <div className='recipe-page-container'>
         <div className='meal-info'>

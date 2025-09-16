@@ -18,14 +18,15 @@ export default function NewRecipe() {
     })
     const customRecipes = JSON.parse(localStorage.getItem("customRecipes"))
     const imageRef = useRef()
+    const dialog = useRef()
     console.log(recipeInfo)
 
-    function modalHandler(e){
-        e.preventDefault()
-        newIngredient.openModal === 'none' ? setNewIngredients((prevState) => {
-            return {...prevState, openModal: 'flex'}})
-     : setNewIngredients((prevState) => {
-            return {...prevState, openModal: 'none'}})
+    function modalHandler(){
+        dialog.current?.showModal()
+    //     newIngredient.openModal === 'none' ? setNewIngredients((prevState) => {
+    //         return {...prevState, openModal: 'flex'}})
+    //  : setNewIngredients((prevState) => {
+    //         return {...prevState, openModal: 'none'}})
     }
 
     function saveMeal(){
@@ -88,7 +89,7 @@ export default function NewRecipe() {
  
   return (
     <form className='recipe-page-container'>
-        <div className='ingredient-modal' style={{display: `${newIngredient.openModal}`}}>
+        <dialog className='ingredient-modal' ref={dialog}>
             <div className='modal-container'>
                 <h3>Add Ingredient</h3>
                 <div className="modal-inputs">
@@ -96,11 +97,11 @@ export default function NewRecipe() {
                     <input placeholder='Ingredient'  onChange={(e) => setNewIngredients({...newIngredient, ingredient: e.target.value})} type="text" />
                 </div>
                 <div className="modal-buttons">
-                    <button onClick={() => addIngredient()}>Add</button>
-                    <button onClick={() => modalHandler(event)}>Close</button>
+                    <button type='button' onClick={() => addIngredient()}>Add</button>
+                    <button type='button' onClick={() => dialog.current?.close()}>Close</button>
                 </div>
             </div>
-        </div>
+        </dialog>
         <div className='page-actions'>
             <button onClick={() => navigate('/Recipes')}>Back to Recipes</button>
             <button onClick={() => saveMeal()}>Save Meal</button>
@@ -117,7 +118,7 @@ export default function NewRecipe() {
                 <input type="text" onChange={(e) => setRecipeInfo({...recipeInfo, mealName: e.target.value})} placeholder='Meal Name' />
                 <h3>Ingredients</h3>
                 {
-                   recipeInfo.ingredients.length === 0 ? <p style={{fontSize: "1.2vw", margin: "20px"}}>No ingredients added</p> 
+                   recipeInfo.ingredients.length === 0 ? <p className='no-ingredients'>No ingredients added</p> 
                    : 
                    <ul>
                    {recipeInfo.ingredients?.map((ingredient, index) => {
@@ -125,7 +126,7 @@ export default function NewRecipe() {
                     })} 
                     </ul>
                 }
-                <button onClick={() => modalHandler(event)}>Add Ingredient</button>
+                <button type='button' onClick={() => dialog.current?.showModal()}>Add Ingredient</button>
             </div>
         </div>
         <div className='directions'>

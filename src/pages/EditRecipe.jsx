@@ -111,8 +111,8 @@ export default function EditRecipe() {
                     <input placeholder='Ingredient'  onChange={(e) => setNewIngredients({...newIngredient, ingredient: e.target.value})} type="text" />
                 </div>
                 <div className="modal-buttons">
-                    <button onClick={() => addIngredient()}>Add</button>
-                    <button onClick={() => modalHandler(event)}>Close</button>
+                    <button type='button' onClick={() => addIngredient()}>Add</button>
+                    <button type='button' onClick={() => modalHandler(event)}>Close</button>
                 </div>
             </div>
         </div>
@@ -141,7 +141,7 @@ export default function EditRecipe() {
                     })} 
                     </ul>
                 }
-                <button onClick={() => modalHandler(event)}>Add Ingredient</button>
+                <button type='button' onClick={() => modalHandler(event)}>Add Ingredient</button>
             </div>
         </div>
         <div className='directions'>
