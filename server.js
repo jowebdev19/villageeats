@@ -8,7 +8,7 @@ app.use(express.json())
 
 app.get('/meal', (req, res) => {
 
-    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=c')
     .then((response) => response.json())
     .then((meal) => {
         
